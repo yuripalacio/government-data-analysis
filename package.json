@@ -1,0 +1,16 @@
+{
+  "name": "@yuripalacio/government-data-analysis",
+  "version": "1.0.0",
+  "description": "Quorum Coding Challenge",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "20"
+  },
+  "keywords": [],
+  "author": "yuripalacio",
+  "license": "ISC"
+}
