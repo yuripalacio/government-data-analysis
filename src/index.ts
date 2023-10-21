@@ -1,24 +1,8 @@
-import { pipeline } from 'stream'
-import { promisify } from 'util'
-import { createReadStream } from 'fs'
-import { dirname, resolve } from 'path'
-import { fileURLToPath } from 'url'
+import Service from './service.js'
+import Controller from './controller.js'
 
-const pipelineAsync = promisify(pipeline)
-const __dirname = dirname(fileURLToPath(import.meta.url))
+const service = new Service()
 
-async function * transform (streams: any) {
-  for await (const chunk of streams) {
-    console.log('my chunk', chunk.toString())
-  }
-}
-
-const run = async () => {
-  const file = resolve(__dirname, '..', 'input', 'bills.csv')
-  await pipelineAsync(
-    createReadStream(file),
-    transform
-  )
-}
-
-void run()
+void Controller.initialize({
+  service
+})

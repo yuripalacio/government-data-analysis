@@ -1,12 +1,15 @@
 import { Entity } from '@/core/entities/entity'
+import { z } from 'zod'
 
-export interface BillProps {
-  id: number
-  title: string
-  sponsor_id: number
-}
+export const billSchema = z.object({
+  id: z.coerce.number(),
+  title: z.string(),
+  sponsor_id: z.coerce.number()
+})
 
-export abstract class Bill<
+export type BillProps = z.infer<typeof billSchema>
+
+export class Bill<
   Props extends BillProps,
 > extends Entity<Props> {
   get id () {
@@ -19,5 +22,11 @@ export abstract class Bill<
 
   get sponsor_id () {
     return this.props.sponsor_id
+  }
+
+  static create (props: BillProps) {
+    const bill = new Bill(props)
+
+    return bill
   }
 }

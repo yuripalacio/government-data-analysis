@@ -1,13 +1,16 @@
 import { Entity } from '@/core/entities/entity'
+import { z } from 'zod'
 
-export interface VoteResultProps {
-  id: number
-  legislator_id: number
-  vote_id: number
-  vote_type: number
-}
+export const voteResultSchema = z.object({
+  id: z.coerce.number(),
+  legislator_id: z.coerce.number(),
+  vote_id: z.coerce.number(),
+  vote_type: z.coerce.number()
+})
 
-export abstract class VoteResult<
+export type VoteResultProps = z.infer<typeof voteResultSchema>
+
+export class VoteResult<
   Props extends VoteResultProps,
 > extends Entity<Props> {
   get id () {
@@ -24,5 +27,11 @@ export abstract class VoteResult<
 
   get vote_type () {
     return this.props.vote_type
+  }
+
+  static create (props: VoteResultProps) {
+    const voteResult = new VoteResult(props)
+
+    return voteResult
   }
 }
