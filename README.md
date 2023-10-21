@@ -24,22 +24,32 @@
 ## Installation
 1. Make sure you have Node.js version 20.5.0 or higher installed. If you don't, install the nvm package manager and then install Node.js version 20.5.0.
 
-2. Perform the project clone.
-    ```bash
-    git clone https://github.com/yuripalacio/government-data-analysis.git
-    ```
-
-3. Instead of `npm`, this project uses `pnpm` as the package manager. If you do not have `pnpm`, install it using the following command:
+2. Instead of `npm`, this project uses `pnpm` as the package manager. If you do not have `pnpm`, install it using the following command:
     ```bash
     npm install --global pnpm
     ```
 
-4. Access the folder and install the project dependencies.
+3. Perform the project clone.
+    ```bash
+    git clone https://github.com/yuripalacio/government-data-analysis.git
+    ```
+
+4. Access the project.
+    ```bash
+    cd government-data-analysis
+    ```
+
+5. Set the project's Node version to the required version.
+    ```bash
+    nvm use
+    ```
+
+6. Access the folder and install the project dependencies.
     ```bash
     pnpm install
     ```
 
-5. Add the .env file to the project root as per the .env.example file if you wish to change any parameters. If you don't wish to perform this process, the project will run with default values.
+7. Add the .env file to the project root as per the .env.example file if you wish to change any parameters. If you don't wish to perform this process, the project will run with default values.
 
 ## Execution
 This program expects the base files to be located in the `input` folder and will generate the results in the `output` folder.
